@@ -1,6 +1,7 @@
 import pytest
 from django.contrib.auth.models import User
 from rest_framework.test import APIClient
+from apps.users.factories import UserFactory
 
 
 @pytest.fixture(autouse=True)
@@ -11,7 +12,12 @@ def enable_db_access(db):
 
 @pytest.fixture
 def user():
-    return User.objects.create(username="bob")
+    return UserFactory.create(username="bob", password="secret_pwd")
+
+
+@pytest.fixture
+def secret_pwd():
+    return "secret_pwd"
 
 
 @pytest.fixture
