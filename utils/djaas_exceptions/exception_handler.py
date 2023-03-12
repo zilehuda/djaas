@@ -33,7 +33,7 @@ def custom_exception_handler(exc, context):
     }
 
     if isinstance(exc, DjaasBaseException):
-        return _handle_tom_base_exceptions(exc, context, response)
+        return _handle_base_exceptions(exc, context, response)
     if exception_class in handlers:
         return handlers[exception_class](exc, context, response)
 
@@ -106,7 +106,7 @@ def _handle_validation_error(exc, context, response):
     return response
 
 
-def _handle_tom_base_exceptions(exc, context, response):
+def _handle_base_exceptions(exc, context, response):
     if isinstance(exc, DjaasValidationException):
         response.data = DjaasResponse.get_response(
             success=False,
