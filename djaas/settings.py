@@ -144,3 +144,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
     ],
 }
+
+
+# djaas configurations
+TRIAL_PERIOD = 7
